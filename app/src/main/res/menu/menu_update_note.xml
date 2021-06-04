@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_note_update"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/edit"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_share_update"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="@string/text_share"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/action_share_text_update"
+                android:title="@string/text_share_as_text" />
+
+            <item
+                android:id="@+id/action_share_image_update"
+                android:title="@string/text_share_as_image" />
+        </menu>
+    </item>
+
+
+</menu>

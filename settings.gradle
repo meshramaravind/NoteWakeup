@@ -1,0 +1,2 @@
+rootProject.name = "NoteWakeup"
+include ':app'

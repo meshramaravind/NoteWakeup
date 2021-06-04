@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">NoteWakeup</string>
+    <string name="no_data_found">No Data Found!</string>
+    <string name="type_your_title">Type your title</string>
+    <string name="type_something">Type something...</string>
+    <string name="done">Done</string>
+    <string name="text_ui_mode">UI Mode</string>
+    <string name="text_share_as_text">Share as Text</string>
+    <string name="text_share_as_image">Share as Image</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_share">Share</string>
+    <string name="attach_file">Attach File</string>
+    <string name="success_note_saved">Note saved successfully</string>
+    <string name="success_note_delete">Note deleted successfully!</string>
+    <string name="success_note_update">Note update successfully!</string>
+    <string name="enternotetitle">Please enter Note!</string>
+    <string name="tap_add_new_note">Tap + Add New Note</string>
+    <string name="edit">Edit</string>
+    <string name="share_message">\nnoteTitle: %s, \nnoteBody: %s, %s \n\nVisit: https://github.com/meshramaravind</string>
+    <string name="search">Search</string>
+
+</resources>
