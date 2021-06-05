@@ -14,4 +14,5 @@
     <color name="colorbluedark">#0C2D4E</color>
     <color name="colortext">#0C2D4E</color>
     <color name="colorcardview">#FFFFFFFF</color>
+    <color name="colortextsecond">#FF000000</color>
 </resources>

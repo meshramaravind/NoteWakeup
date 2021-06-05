@@ -4,8 +4,7 @@
 
     <item
         android:id="@+id/action_note_update"
-        android:icon="@drawable/ic_baseline_edit_24"
-        android:title="@string/edit"
+        android:title="@string/done"
         app:showAsAction="ifRoom" />
 
     <item
@@ -22,6 +21,10 @@
             <item
                 android:id="@+id/action_share_image_update"
                 android:title="@string/text_share_as_image" />
+
+            <item
+                android:id="@+id/action_share_pdf_update"
+                android:title="@string/share_as_pdf" />
         </menu>
     </item>
 

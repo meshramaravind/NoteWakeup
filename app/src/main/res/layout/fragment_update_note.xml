@@ -51,7 +51,7 @@
                         android:gravity="start|top"
                         android:hint="@string/type_something"
                         android:inputType="textMultiLine"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colortextsecond"
                         android:textColorHint="@color/colortext"
                         android:textSize="16sp" />
 

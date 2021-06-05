@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Query
 import com.arvind.notewakeup.model.NoteModel
 import com.arvind.notewakeup.repository.NoteRepository
 import com.arvind.notewakeup.storage.datastore.UIModeDataStore
@@ -42,22 +43,26 @@ class NoteViewModel @Inject constructor(
         }
     }
 
-    // insert transaction
+    // insert  note
     fun insertNote(noteModel: NoteModel) = viewModelScope.launch {
         noteRepository.insert(noteModel)
     }
 
-    // update transaction
+    // update  note
     fun updateNote(noteModel: NoteModel) = viewModelScope.launch {
         noteRepository.update(noteModel)
     }
 
-    // delete transaction
+    // delete note
     fun deleteNote(noteModel: NoteModel) = viewModelScope.launch {
         noteRepository.delete(noteModel)
     }
 
+    //get all note
     fun getAllNote() = noteRepository.getAllNotes()
+
+    //get all search note
+    fun getAllSearchNote(query: String?) = noteRepository.getAllSearchNote(query)
 
 
 }

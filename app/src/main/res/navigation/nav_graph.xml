@@ -27,6 +27,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/action_dashboardFragment_to_searchNoteFragment"
+            app:destination="@id/searchNoteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
     <fragment
@@ -34,6 +42,7 @@
         android:name="com.arvind.notewakeup.view.add.AddNoteFragment"
         android:label="Add Note"
         tools:layout="@layout/fragment_add_note">
+
         <action
             android:id="@+id/action_addNoteFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
@@ -46,17 +55,28 @@
         android:name="com.arvind.notewakeup.view.edit.UpdateNoteFragment"
         android:label="Update Note"
         tools:layout="@layout/fragment_update_note">
+
         <action
             android:id="@+id/action_updateNoteFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popUpTo="@id/updateNoteFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="noteModel"
             app:argType="com.arvind.notewakeup.model.NoteModel"
             app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchNoteFragment"
+        android:name="com.arvind.notewakeup.view.search.SearchNoteFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search_note">
+        <action
+            android:id="@+id/action_searchNoteFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/searchNoteFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

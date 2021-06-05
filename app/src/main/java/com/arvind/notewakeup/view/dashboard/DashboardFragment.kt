@@ -1,13 +1,16 @@
 package com.arvind.notewakeup.view.dashboard
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.arvind.notewakeup.R
 import com.arvind.notewakeup.adapter.CustomNoteAdapter
 import com.arvind.notewakeup.databinding.FragmentDashboardBinding
@@ -19,9 +22,10 @@ import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.layout_empty_notes.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
-import java.lang.Math.abs
+import java.util.*
 
 @AndroidEntryPoint
 class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>() {
@@ -37,7 +41,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
         super.onViewCreated(view, savedInstanceState)
         setupRV()
         inits()
-        observeNotes()
+
     }
 
     private fun setupRV() {
@@ -46,63 +50,50 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
             setHasFixedSize(true)
             adapter = customNoteAdapter
 
-                viewModel.getAllNote().observe(viewLifecycleOwner, { note ->
-                    customNoteAdapter.differ.submitList(note)
+            viewModel.getAllNote().observe(viewLifecycleOwner, { note ->
+                customNoteAdapter.differ.submitList(note)
+                updateUI(note)
 
-                })
+            })
 
         }
     }
 
-    private fun observeNotes() = lifecycleScope.launchWhenCreated {
-        viewModel.uiState.collect { uiState ->
-            when (uiState) {
-                is ViewState.Loading -> {
-                }
-                is ViewState.Success -> {
-                    showAllViews()
-                    onNoteLoaded(uiState.notemodel)
-
-                }
-                is ViewState.Error -> {
-                    toast("Error")
-                }
-                is ViewState.Empty -> {
-                    hideAllViews()
-                }
-            }
+    private fun updateUI(note: List<NoteModel>) {
+        if (note.isNotEmpty()) {
+            layout_empty_notes_dashboard.hide()
+            rv_notedashboard.visibility = View.VISIBLE
+        } else {
+            layout_empty_notes_dashboard.show()
+            rv_notedashboard.visibility = View.GONE
         }
-    }
-
-    private fun onNoteLoaded(notemodel: List<NoteModel>) {
-        customNoteAdapter.differ.submitList(notemodel)
 
     }
 
-    private fun showAllViews() = with(binding) {
-        dashboardGroup.show()
-        rvNotedashboard.show()
-    }
-
-    private fun hideAllViews() = with(binding) {
-        dashboardGroup.hide()
-    }
 
     private fun inits() = with(binding) {
         btnAddNewnote.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_addNoteFragment)
         }
 
-        mainDashboardScrollview.setOnScrollChangeListener(
-            NestedScrollView.OnScrollChangeListener { _, sX, sY, oX, oY ->
-                if (abs(sY - oY) > 10) {
-                    when {
-                        sY > oY -> btnAddNewnote.hide()
-                        oY > sY -> btnAddNewnote.show()
-                    }
-                }
+        edInputSearchDashboard.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_searchNoteFragment)
+        }
+
+        mainDashboardScrollview.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY -> // the delay of the extension of the FAB is set for 12 items
+            if (scrollY > oldScrollY + 12 && btnAddNewnote.isExtended()) {
+                btnAddNewnote.shrink()
             }
-        )
+
+            if (scrollY < oldScrollY - 12 && !btnAddNewnote.isExtended()) {
+                btnAddNewnote.extend()
+            }
+
+            if (scrollY == 0) {
+                btnAddNewnote.extend()
+            }
+        })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

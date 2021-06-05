@@ -2,13 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="note"
+            type="com.arvind.notewakeup.model.NoteModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/cardView_items_notes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
@@ -39,10 +46,10 @@
 
                     <TextView
                         android:id="@+id/tvNoteTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Note title"
+                        android:text="@{note.noteTitle}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
@@ -54,8 +61,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:ellipsize="end"
                     android:maxHeight="170dp"
-                    android:text="Type something..."
+                    android:maxLines="5"
+                    android:text="@{note.noteBody}"
                     android:textColor="@color/colortext"
                     android:textSize="16sp" />
             </LinearLayout>

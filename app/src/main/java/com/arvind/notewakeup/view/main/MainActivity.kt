@@ -12,6 +12,8 @@ import com.arvind.notewakeup.R
 import com.arvind.notewakeup.databinding.ActivityMainBinding
 import com.arvind.notewakeup.repository.NoteRepository
 import com.arvind.notewakeup.storage.db.NoteDatabase
+import com.arvind.notewakeup.utils.hide
+import com.arvind.notewakeup.utils.show
 import com.arvind.notewakeup.utils.viewModelFactory
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,9 +46,22 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.dashboardFragment -> {
                     supportActionBar!!.setDisplayShowTitleEnabled(false)
+                    binding.tvToolbarTitle.show()
+
                 }
                 R.id.addNoteFragment -> {
                     supportActionBar!!.setDisplayShowTitleEnabled(true)
+                    binding.tvToolbarTitle.hide()
+                }
+
+                R.id.updateNoteFragment -> {
+                    supportActionBar!!.setDisplayShowTitleEnabled(true)
+                    binding.tvToolbarTitle.hide()
+                }
+
+                R.id.searchNoteFragment -> {
+                    supportActionBar!!.setDisplayShowTitleEnabled(false)
+                    binding.tvToolbarTitle.hide()
                 }
 
                 else -> {

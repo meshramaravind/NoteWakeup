@@ -19,48 +19,103 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/dashboard_group"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/layoutHeader_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:cardBackgroundColor="@color/colorcardview"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_5sdp">
+
+                        <ImageView
+                            android:id="@+id/imageSearch"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:contentDescription="@string/app_name"
+                            android:padding="@dimen/_2sdp"
+                            android:src="@drawable/ic_baseline_search_24"
+                            app:tint="@color/black" />
+
+                        <EditText
+                            android:id="@+id/ed_inputSearch_dashboard"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/open_sans_regular"
+                            android:hint="@string/search_your_notes"
+                            android:textColor="@color/colortext"
+                            android:textColorHint="@color/colortext"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_notedashboard"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="visible"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:clipToPadding="false"
+                    android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutHeader_dashboard"
                     app:spanCount="2"
                     tools:listitem="@layout/items_note" />
 
+                <include
+                    android:id="@+id/layout_empty_notes_dashboard"
+                    layout="@layout/layout_empty_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
+                </include>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
-        <ViewStub
-            android:id="@+id/emptyStateLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout="@layout/content_empty_state_layout"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/btn_add_newnote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/_32sdp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/blue_500"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_baseline_add_24"
-            app:borderWidth="0dp"
-            app:tint="@color/white" />
+            android:text="@string/note"
+            android:textColor="@android:color/white"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconTint="@color/white" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

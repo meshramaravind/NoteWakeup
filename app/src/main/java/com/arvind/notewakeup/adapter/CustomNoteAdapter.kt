@@ -14,9 +14,44 @@ import java.util.*
 
 class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>() {
 
-    class NoteViewHolder(val itemsNoteBinding: ItemsNoteBinding) :
-        RecyclerView.ViewHolder(itemsNoteBinding.root)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        return NoteViewHolder(
+            ItemsNoteBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
 
+    }
+
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+        val noteModel = differ.currentList[position]
+        holder.bind(noteModel)
+    }
+
+    inner class NoteViewHolder(val itemsNoteBinding: ItemsNoteBinding) :
+        RecyclerView.ViewHolder(itemsNoteBinding.root) {
+        fun bind(noteModel: NoteModel) {
+            itemsNoteBinding.apply {
+                itemsNoteBinding.note = noteModel
+                itemsNoteBinding.executePendingBindings()
+
+                val random = Random()
+                val color =
+                    Color.argb(
+                        255, random.nextInt(256),
+                        random.nextInt(256), random.nextInt(256)
+                    )
+                ibColor.setBackgroundColor(color)
+
+                root.setOnClickListener { v ->
+                    val direction = DashboardFragmentDirections
+                        .actionDashboardFragmentToUpdateNoteFragment(noteModel)
+                    v.findNavController().navigate(direction)
+                }
+
+            }
+        }
+    }
 
     private val differCallback =
         object : DiffUtil.ItemCallback<NoteModel>() {
@@ -34,37 +69,9 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
 
     val differ = AsyncListDiffer(this, differCallback)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        return NoteViewHolder(
-            ItemsNoteBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
-            )
-        )
-
-    }
-
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val noteModel = differ.currentList[position]
-
-        holder.itemsNoteBinding.tvNoteTitle.text = noteModel.noteTitle
-        holder.itemsNoteBinding.tvNoteBody.text = noteModel.noteBody
-        val random = Random()
-        val color =
-            Color.argb(
-                255, random.nextInt(256),
-                random.nextInt(256), random.nextInt(256)
-            )
-        holder.itemsNoteBinding.ibColor.setBackgroundColor(color)
-
-        holder.itemView.setOnClickListener { view ->
-
-            val direction = DashboardFragmentDirections
-                .actionDashboardFragmentToUpdateNoteFragment(noteModel)
-            view.findNavController().navigate(direction)
-        }
-    }
-
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 }
+
+
