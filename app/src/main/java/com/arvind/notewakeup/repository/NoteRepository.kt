@@ -1,6 +1,6 @@
 package com.arvind.notewakeup.repository
 
-import androidx.room.Query
+
 import com.arvind.notewakeup.model.NoteModel
 import com.arvind.notewakeup.storage.db.NoteDatabase
 import javax.inject.Inject

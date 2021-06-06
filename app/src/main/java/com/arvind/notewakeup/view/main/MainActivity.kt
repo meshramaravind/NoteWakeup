@@ -7,7 +7,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.room.RoomDatabase
 import com.arvind.notewakeup.R
 import com.arvind.notewakeup.databinding.ActivityMainBinding
 import com.arvind.notewakeup.repository.NoteRepository
@@ -56,11 +55,6 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.updateNoteFragment -> {
                     supportActionBar!!.setDisplayShowTitleEnabled(true)
-                    binding.tvToolbarTitle.hide()
-                }
-
-                R.id.searchNoteFragment -> {
-                    supportActionBar!!.setDisplayShowTitleEnabled(false)
                     binding.tvToolbarTitle.hide()
                 }
 

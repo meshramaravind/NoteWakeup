@@ -47,9 +47,10 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding, NoteViewModel>() {
     private fun saveNote() {
         val noteTitle = binding.etNoteTitle.text.toString().trim()
         val noteBody = binding.etNoteBody.text.toString().trim()
+        val date = binding.tvNoteDateAddnote.text.toString().trim()
 
         if (noteTitle.isNotEmpty()) {
-            val note = NoteModel(0, noteTitle, noteBody)
+            val note = NoteModel(0, noteTitle, noteBody, date)
 
             viewModel.insertNote(note)
             toast(getString(R.string.success_note_saved))

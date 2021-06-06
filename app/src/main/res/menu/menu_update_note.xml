@@ -8,6 +8,12 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:title="@string/text_delete"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_share_update"
         android:icon="@drawable/ic_baseline_share_24"
         android:title="@string/text_share"

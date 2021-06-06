@@ -17,8 +17,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                app:cardBackgroundColor="@color/colorcardview"
+                app:cardBackgroundColor="@color/colorbackground"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="8dp">
 
@@ -40,6 +39,17 @@
                         android:textColorHint="@color/black"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvNoteDate_updatenote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="gone"
+                        tools:text="Sunday, 06 Jun 2021" />
 
                     <EditText
                         android:id="@+id/etNoteBodyUpdate"

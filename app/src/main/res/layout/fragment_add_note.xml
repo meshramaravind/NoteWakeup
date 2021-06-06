@@ -14,12 +14,7 @@
             android:id="@+id/cardView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardBackgroundColor="@color/colorcardview"
-            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/colorbackground"
             android:background="@color/white"
             app:cardCornerRadius="5dp"
             app:cardElevation="8dp"
@@ -46,6 +41,17 @@
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvNoteDate_addnote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    tools:text="Sunday, 06 Jun 2021" />
 
                 <EditText
                     android:id="@+id/etNoteBody"

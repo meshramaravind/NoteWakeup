@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -49,12 +50,26 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/open_sans_bold"
                         android:text="@{note.noteTitle}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Title" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvNoteDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:visibility="gone"
+                    tools:text="06 Jun 2021" />
 
                 <TextView
                     android:id="@+id/tvNoteBody"
@@ -62,11 +77,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:ellipsize="end"
+                    android:fontFamily="@font/open_sans_regular"
                     android:maxHeight="170dp"
                     android:maxLines="5"
                     android:text="@{note.noteBody}"
                     android:textColor="@color/colortext"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    tools:text="Body" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

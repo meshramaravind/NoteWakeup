@@ -1,12 +1,9 @@
 package com.arvind.notewakeup.view.dashboard
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SearchView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,17 +12,14 @@ import com.arvind.notewakeup.R
 import com.arvind.notewakeup.adapter.CustomNoteAdapter
 import com.arvind.notewakeup.databinding.FragmentDashboardBinding
 import com.arvind.notewakeup.model.NoteModel
-import com.arvind.notewakeup.utils.ViewState
 import com.arvind.notewakeup.utils.hide
+import com.arvind.notewakeup.utils.onQueryTextChanged
 import com.arvind.notewakeup.utils.show
 import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import kotlinx.android.synthetic.main.layout_empty_notes.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
-import java.util.*
 
 @AndroidEntryPoint
 class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>() {
@@ -77,7 +71,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
         }
 
         edInputSearchDashboard.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboardFragment_to_searchNoteFragment)
+
         }
 
         mainDashboardScrollview.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY -> // the delay of the extension of the FAB is set for 12 items
@@ -97,7 +91,9 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
         inflater.inflate(R.menu.main_menu, menu)
+
         lifecycleScope.launchWhenStarted {
             val isChecked = viewModel.getUIMode.first()
             val uiMode = menu.findItem(R.id.action_night_mode)
@@ -105,6 +101,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
             setUIMode(uiMode, isChecked)
         }
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here.

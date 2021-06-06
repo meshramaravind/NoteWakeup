@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arvind.notewakeup.R
@@ -49,11 +51,30 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
             R.id.action_note_update -> {
                 updateNote()
             }
+            R.id.action_delete -> {
+                deletenote()
+            }
 
             R.id.action_share_text_update -> shareText()
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun deletenote() {
+
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("Delete Note")
+            setMessage("Are you sure you want to permanently delete this note?")
+            setPositiveButton("DELETE") { _, _ ->
+                viewModel.deleteNote(noteModel)
+                view?.findNavController()?.navigate(
+                    R.id.action_updateNoteFragment_to_dashboardFragment
+                )
+            }
+            setNegativeButton("CANCEL", null)
+        }.create().show()
+
     }
 
 
@@ -76,9 +97,10 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
     private fun updateNote() {
         val title = binding.etNoteTitleUpdate.text.toString().trim()
         val body = binding.etNoteBodyUpdate.text.toString().trim()
+        val date = binding.tvNoteDateUpdatenote.text.toString().trim()
 
         if (title.isNotEmpty()) {
-            val note = NoteModel(noteModel.id, title, body)
+            val note = NoteModel(noteModel.id, title, body, date)
             viewModel.updateNote(note)
 
             toast(getString(R.string.success_note_update))

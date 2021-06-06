@@ -2,6 +2,7 @@ package com.arvind.notewakeup.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -35,6 +36,10 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
                 itemsNoteBinding.note = noteModel
                 itemsNoteBinding.executePendingBindings()
 
+
+                tvNoteDate.text = noteModel.createdAtDateFormat
+                tvNoteDate.visibility = View.VISIBLE
+
                 val random = Random()
                 val color =
                     Color.argb(
@@ -42,6 +47,8 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
                         random.nextInt(256), random.nextInt(256)
                     )
                 ibColor.setBackgroundColor(color)
+
+
 
                 root.setOnClickListener { v ->
                     val direction = DashboardFragmentDirections

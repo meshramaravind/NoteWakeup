@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.arvind.notewakeup.model.NoteModel
 
+
 @Dao
 interface NoteDao {
 
@@ -25,6 +26,5 @@ interface NoteDao {
 
     @Query("SELECT * FROM notewakeup WHERE noteTitle LIKE :query OR noteBody LIKE:query")
     fun getsearchNote(query: String?): LiveData<List<NoteModel>>
-
 
 }
