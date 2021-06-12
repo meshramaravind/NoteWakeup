@@ -29,7 +29,7 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
         holder.bind(noteModel)
     }
 
-    inner class NoteViewHolder(val itemsNoteBinding: ItemsNoteBinding) :
+    inner class NoteViewHolder(private val itemsNoteBinding: ItemsNoteBinding) :
         RecyclerView.ViewHolder(itemsNoteBinding.root) {
         fun bind(noteModel: NoteModel) {
             itemsNoteBinding.apply {

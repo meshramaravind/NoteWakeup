@@ -2,10 +2,14 @@ package com.arvind.notewakeup.view.edit
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ShareCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -13,6 +17,9 @@ import androidx.navigation.fragment.navArgs
 import com.arvind.notewakeup.R
 import com.arvind.notewakeup.databinding.FragmentUpdateNoteBinding
 import com.arvind.notewakeup.model.NoteModel
+import com.arvind.notewakeup.utils.hide
+import com.arvind.notewakeup.utils.saveBitmap
+import com.arvind.notewakeup.utils.show
 import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +29,14 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
     private val args: UpdateNoteFragmentArgs by navArgs()
     override val viewModel: NoteViewModel by activityViewModels()
     private lateinit var noteModel: NoteModel
+
+
+    // handle permission dialog
+    private val requestLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) shareImage()
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +57,7 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
         inflater.inflate(R.menu.menu_update_note, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -56,10 +72,50 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
             }
 
             R.id.action_share_text_update -> shareText()
+            R.id.action_share_image_update -> shareImage()
 
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun shareImage() {
+        if (!isStoragePermissionGranted()) {
+            requestLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            return
+        }
+
+        // unHide the app logo and name
+        showAppNameAndLogo()
+        val imageURI = binding.detailView.drawToBitmap().let { bitmap ->
+            hideAppNameAndLogo()
+            saveBitmap(requireActivity(), bitmap)
+        } ?: run {
+            toast("Error occurred!")
+            return
+        }
+
+        val intent = ShareCompat.IntentBuilder(requireActivity())
+            .setType("image/jpeg")
+            .setStream(imageURI)
+            .intent
+
+        startActivity(Intent.createChooser(intent, null))
+    }
+
+    private fun showAppNameAndLogo() = with(binding) {
+        appIconForShare.show()
+        appNameForShare.show()
+    }
+
+    private fun hideAppNameAndLogo() = with(binding) {
+        appIconForShare.hide()
+        appNameForShare.hide()
+    }
+
+    private fun isStoragePermissionGranted(): Boolean = ContextCompat.checkSelfPermission(
+        requireContext(),
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    ) == PackageManager.PERMISSION_GRANTED
 
     private fun deletenote() {
 

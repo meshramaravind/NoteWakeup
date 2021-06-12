@@ -47,16 +47,16 @@
         android:name="com.arvind.notewakeup.view.edit.UpdateNoteFragment"
         android:label="Update Note"
         tools:layout="@layout/fragment_update_note">
-
+        <argument
+            android:name="noteModel"
+            app:argType="com.arvind.notewakeup.model.NoteModel"
+            app:nullable="true" />
         <action
             android:id="@+id/action_updateNoteFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
             app:popUpTo="@id/updateNoteFragment"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="noteModel"
-            app:argType="com.arvind.notewakeup.model.NoteModel"
-            app:nullable="true" />
+
     </fragment>
 
 </navigation>

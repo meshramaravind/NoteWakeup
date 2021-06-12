@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detail_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorbackground"
@@ -69,6 +70,31 @@
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/app_icon_for_share"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/app_name_for_share"
+            app:srcCompat="@drawable/ic_baseline_notes_24" />
+
+        <TextView
+            android:id="@+id/app_name_for_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/open_sans_regular"
+            android:gravity="center"
+            android:padding="@dimen/_16sdp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/app_icon_for_share" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

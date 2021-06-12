@@ -17,7 +17,7 @@
     <string name="no_data_found">No Notes Found!</string>
     <string name="tap_add_new_note">Tap the Add button to create a note</string>
     <string name="edit">Edit</string>
-    <string name="share_message">\nnoteTitle: %s, \nnoteBody: %s, %s \n\nVisit: https://github.com/meshramaravind</string>
+    <string name="share_message">\nNoteTitle: %s, \nNoteBody: %s, \nCreatedAt: %s \n\nVisit: https://github.com/meshramaravind/NoteWakeup</string>
     <string name="search">Search</string>
     <string name="note">Note</string>
     <string name="search_your_notes">Search your notes…</string>
