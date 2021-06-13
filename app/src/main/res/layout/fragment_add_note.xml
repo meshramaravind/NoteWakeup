@@ -7,67 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorbackground"
-        android:orientation="vertical"
         tools:context=".view.add.AddNoteFragment">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:cardBackgroundColor="@color/colorbackground"
-            android:background="@color/white"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <include
+            android:id="@+id/addNoteLayout"
+            layout="@layout/content_add_note_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <EditText
-                    android:id="@+id/etNoteTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:hint="@string/type_your_title"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="@dimen/_16sdp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvNoteDate_addnote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp"
-                    android:visibility="gone"
-                    tools:text="Sunday, 06 Jun 2021" />
-
-                <EditText
-                    android:id="@+id/etNoteBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/type_something"
-                    android:inputType="textMultiLine"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/colortext"
-                    android:textSize="16sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

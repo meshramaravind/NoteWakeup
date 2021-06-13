@@ -21,8 +21,10 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             app:cardBackgroundColor="@color/colorcardview"
-            app:cardCornerRadius="@dimen/_5sdp"
-            app:cardElevation="@dimen/_8sdp">
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +54,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/open_sans_bold"
                         android:text="@{note.noteTitle}"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold"
                         tools:text="Title" />
@@ -66,7 +68,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/open_sans_regular"
                     android:text=""
-                    android:textColor="@color/black"
+                    android:textColor="@color/colortextsecond"
                     android:textSize="@dimen/_11sdp"
                     android:visibility="gone"
                     tools:text="06 Jun 2021" />
@@ -81,7 +83,7 @@
                     android:maxHeight="170dp"
                     android:maxLines="5"
                     android:text="@{note.noteBody}"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colortextsecond"
                     android:textSize="16sp"
                     tools:text="Body" />
             </LinearLayout>

@@ -48,8 +48,6 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
                     )
                 ibColor.setBackgroundColor(color)
 
-
-
                 root.setOnClickListener { v ->
                     val direction = DashboardFragmentDirections
                         .actionDashboardFragmentToUpdateNoteFragment(noteModel)

@@ -41,4 +41,9 @@
     <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="AlertDialogCustom" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@color/colorcardview</item>
+    </style>
+
 </resources>

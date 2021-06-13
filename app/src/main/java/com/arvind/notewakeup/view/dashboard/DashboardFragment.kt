@@ -3,7 +3,6 @@ package com.arvind.notewakeup.view.dashboard
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SearchView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +12,6 @@ import com.arvind.notewakeup.adapter.CustomNoteAdapter
 import com.arvind.notewakeup.databinding.FragmentDashboardBinding
 import com.arvind.notewakeup.model.NoteModel
 import com.arvind.notewakeup.utils.hide
-import com.arvind.notewakeup.utils.onQueryTextChanged
 import com.arvind.notewakeup.utils.show
 import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
@@ -47,9 +45,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
             viewModel.getAllNote().observe(viewLifecycleOwner, { note ->
                 customNoteAdapter.differ.submitList(note)
                 updateUI(note)
-
             })
-
         }
     }
 

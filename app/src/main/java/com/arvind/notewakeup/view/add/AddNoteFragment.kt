@@ -10,6 +10,8 @@ import com.arvind.notewakeup.model.NoteModel
 import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.content_add_note_layout.view.*
+import kotlinx.android.synthetic.main.fragment_add_note.*
 
 @AndroidEntryPoint
 class AddNoteFragment : BaseFragment<FragmentAddNoteBinding, NoteViewModel>() {
@@ -44,10 +46,10 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding, NoteViewModel>() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun saveNote() {
-        val noteTitle = binding.etNoteTitle.text.toString().trim()
-        val noteBody = binding.etNoteBody.text.toString().trim()
-        val date = binding.tvNoteDateAddnote.text.toString().trim()
+    private fun saveNote() = with(binding) {
+        val noteTitle = addNoteLayout.etNoteTitle.text.toString().trim()
+        val noteBody = addNoteLayout.etNoteBody.text.toString().trim()
+        val date = addNoteLayout.tvNoteDate_addnote.text.toString().trim()
 
         if (noteTitle.isNotEmpty()) {
             val note = NoteModel(0, noteTitle, noteBody, date)

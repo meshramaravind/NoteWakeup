@@ -23,6 +23,8 @@ import com.arvind.notewakeup.utils.show
 import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.content_add_note_layout.view.*
+import kotlinx.android.synthetic.main.fragment_update_note.*
 
 @AndroidEntryPoint
 class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel>() {
@@ -51,8 +53,8 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
     }
 
     private fun getdetailsnote() = with(binding) {
-        binding.etNoteBodyUpdate.setText(noteModel.noteBody)
-        binding.etNoteTitleUpdate.setText(noteModel.noteTitle)
+        updateNoteLayout.etNoteBody.setText(noteModel.noteBody)
+        updateNoteLayout.etNoteTitle.setText(noteModel.noteTitle)
 
     }
 
@@ -119,9 +121,9 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
 
     private fun deletenote() {
 
-        AlertDialog.Builder(requireContext()).apply {
+        AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom).apply {
             setTitle("Delete Note")
-            setMessage("Are you sure you want to permanently delete this note?")
+            setMessage("Are you sure you want to delete this note?")
             setPositiveButton("DELETE") { _, _ ->
                 viewModel.deleteNote(noteModel)
                 view?.findNavController()?.navigate(
@@ -138,8 +140,8 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
     private fun shareText() = with(binding) {
         val shareMsg = getString(
             R.string.share_message,
-            binding.etNoteTitleUpdate.text.toString(),
-            binding.etNoteBodyUpdate.text.toString(),
+            updateNoteLayout.etNoteTitle.text.toString(),
+            updateNoteLayout.etNoteBody.text.toString(),
         )
 
         val intent = ShareCompat.IntentBuilder(requireActivity())
@@ -150,10 +152,10 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
         startActivity(Intent.createChooser(intent, null))
     }
 
-    private fun updateNote() {
-        val title = binding.etNoteTitleUpdate.text.toString().trim()
-        val body = binding.etNoteBodyUpdate.text.toString().trim()
-        val date = binding.tvNoteDateUpdatenote.text.toString().trim()
+    private fun updateNote() = with(binding) {
+        val title = updateNoteLayout.etNoteTitle.text.toString().trim()
+        val body = updateNoteLayout.etNoteBody.text.toString().trim()
+        val date = updateNoteLayout.tvNoteDate_addnote.text.toString().trim()
 
         if (title.isNotEmpty()) {
             val note = NoteModel(noteModel.id, title, body, date)

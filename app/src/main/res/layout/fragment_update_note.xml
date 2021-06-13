@@ -10,66 +10,12 @@
         android:background="@color/colorbackground"
         tools:context=".view.edit.UpdateNoteFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/colorbackground"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <EditText
-                        android:id="@+id/etNoteTitleUpdate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:ems="10"
-                        android:hint="@string/type_your_title"
-                        android:inputType="text"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvNoteDate_updatenote"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp"
-                        android:visibility="gone"
-                        tools:text="Sunday, 06 Jun 2021" />
-
-                    <EditText
-                        android:id="@+id/etNoteBodyUpdate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:background="@android:color/transparent"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="@string/type_something"
-                        android:inputType="textMultiLine"
-                        android:textColor="@color/colortextsecond"
-                        android:textColorHint="@color/colortext"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+        <include
+            android:id="@+id/updateNoteLayout"
+            layout="@layout/content_add_note_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/app_icon_for_share"
