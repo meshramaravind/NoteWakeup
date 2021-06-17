@@ -25,6 +25,7 @@ import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.content_add_note_layout.view.*
 import kotlinx.android.synthetic.main.fragment_update_note.*
+import kotlinx.android.synthetic.main.items_note.view.*
 
 @AndroidEntryPoint
 class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel>() {
@@ -55,6 +56,7 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
     private fun getdetailsnote() = with(binding) {
         updateNoteLayout.etNoteBody.setText(noteModel.noteBody)
         updateNoteLayout.etNoteTitle.setText(noteModel.noteTitle)
+        updateNoteLayout.tvNoteDate_addnote.text = noteModel.createdAtDateFormat
 
     }
 
@@ -142,6 +144,7 @@ class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel
             R.string.share_message,
             updateNoteLayout.etNoteTitle.text.toString(),
             updateNoteLayout.etNoteBody.text.toString(),
+            updateNoteLayout.tvNoteDate_addnote.text.toString()
         )
 
         val intent = ShareCompat.IntentBuilder(requireActivity())

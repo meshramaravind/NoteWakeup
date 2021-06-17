@@ -15,4 +15,6 @@
     <color name="colortext">#FFFFFFFF</color>
     <color name="colorcardview">#38414A</color>
     <color name="colortextsecond">#FFFFFFFF</color>
+    <color name="colorgraytext">#FFFFFFFF</color>
+    <color name="colormenu">#212D3B</color>
 </resources>

@@ -7,17 +7,17 @@ import javax.inject.Inject
 
 class NoteRepository @Inject constructor(private val db: NoteDatabase) {
 
-    // insert transaction
+    // insert note
     suspend fun insert(noteModel: NoteModel) = db.getNoteDao().insertnote(
         noteModel
     )
 
-    // update transaction
+    // update note
     suspend fun update(noteModel: NoteModel) = db.getNoteDao().udatatenote(
         noteModel
     )
 
-    // delete transaction
+    // delete note
     suspend fun delete(noteModel: NoteModel) = db.getNoteDao().deletenote(
         noteModel
     )

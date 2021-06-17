@@ -8,6 +8,8 @@
         <item name="colorPrimaryVariant">@color/colorbgappbar</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:textColor">@color/colortextsecond</item>
+        <item name="actionModeBackground">@android:color/holo_orange_light</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_baseline_close_24</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/colortext</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -44,6 +46,15 @@
 
     <style name="AlertDialogCustom" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
         <item name="android:background">@color/colorcardview</item>
+    </style>
+
+    <style name="MyDarkToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:itemBackground">@color/colormenu</item>
+    </style>
+
+    <style name="ActionModeStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:actionModeCloseDrawable">@drawable/ic_baseline_close_24</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_baseline_close_24</item>
     </style>
 
 </resources>

@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
-class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>() {
+class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(){
     private lateinit var customNoteAdapter: CustomNoteAdapter
     override val viewModel: NoteViewModel by activityViewModels()
 
@@ -42,10 +42,13 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
             setHasFixedSize(true)
             adapter = customNoteAdapter
 
-            viewModel.getAllNote().observe(viewLifecycleOwner, { note ->
-                customNoteAdapter.differ.submitList(note)
-                updateUI(note)
-            })
+            activity.let {
+                viewModel.getAllNote().observe(viewLifecycleOwner, { note ->
+                    customNoteAdapter.differ.submitList(note)
+                    updateUI(note)
+                })
+            }
+
         }
     }
 
@@ -128,5 +131,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentDashboardBinding.inflate(inflater, container, false)
+
+
 
 }

@@ -35,8 +35,7 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
             itemsNoteBinding.apply {
                 itemsNoteBinding.note = noteModel
                 itemsNoteBinding.executePendingBindings()
-
-
+                
                 tvNoteDate.text = noteModel.createdAtDateFormat
                 tvNoteDate.visibility = View.VISIBLE
 
@@ -54,8 +53,11 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
                     v.findNavController().navigate(direction)
                 }
 
+
             }
         }
+
+
     }
 
     private val differCallback =
@@ -77,6 +79,7 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
 }
 
 
