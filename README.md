@@ -12,11 +12,13 @@ Material Components,
 Room DB, Dark Theme & Light Theme)
 
 # Day Mode 🌞
-<img src="https://user-images.githubusercontent.com/25154589/122857724-9071bd80-d336-11eb-8957-94f858999cda.png" width="750" />
+
+![NoteLight](https://user-images.githubusercontent.com/25154589/122858261-a03dd180-d337-11eb-8b1c-5658aba26b0b.png)
 
 
 # Dark Mode Too 😉
-<img src="https://user-images.githubusercontent.com/25154589/122857745-9bc4e900-d336-11eb-9a1a-9919c90fd1e3.png" width="750" />
+
+![NoteappDark](https://user-images.githubusercontent.com/25154589/122858281-a633b280-d337-11eb-8716-087c1601c2aa.png)
 
 
 
