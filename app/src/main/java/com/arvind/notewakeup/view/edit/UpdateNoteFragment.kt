@@ -24,8 +24,6 @@ import com.arvind.notewakeup.view.base.BaseFragment
 import com.arvind.notewakeup.viewmodel.NoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.content_add_note_layout.view.*
-import kotlinx.android.synthetic.main.fragment_update_note.*
-import kotlinx.android.synthetic.main.items_note.view.*
 
 @AndroidEntryPoint
 class UpdateNoteFragment : BaseFragment<FragmentUpdateNoteBinding, NoteViewModel>() {

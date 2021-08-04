@@ -13,14 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteWakeup">
+
         <activity
             android:name=".view.main.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.NoteWakeup.NoActionBar" />
-
-        <activity
-            android:name=".view.splash.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            android:theme="@style/Theme.NoteWakeup.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -53,10 +53,8 @@ class CustomNoteAdapter : RecyclerView.Adapter<CustomNoteAdapter.NoteViewHolder>
                     v.findNavController().navigate(direction)
                 }
 
-
             }
         }
-
 
     }
 

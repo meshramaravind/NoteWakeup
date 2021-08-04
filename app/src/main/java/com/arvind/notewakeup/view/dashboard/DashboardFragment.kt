@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
-class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(){
+class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>() {
     private lateinit var customNoteAdapter: CustomNoteAdapter
     override val viewModel: NoteViewModel by activityViewModels()
 
@@ -74,11 +74,11 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
         }
 
         mainDashboardScrollview.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY -> // the delay of the extension of the FAB is set for 12 items
-            if (scrollY > oldScrollY + 12 && btnAddNewnote.isExtended()) {
+            if (scrollY > oldScrollY + 12 && btnAddNewnote.isExtended) {
                 btnAddNewnote.shrink()
             }
 
-            if (scrollY < oldScrollY - 12 && !btnAddNewnote.isExtended()) {
+            if (scrollY < oldScrollY - 12 && !btnAddNewnote.isExtended) {
                 btnAddNewnote.extend()
             }
 
@@ -131,7 +131,5 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, NoteViewModel>(
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentDashboardBinding.inflate(inflater, container, false)
-
-
 
 }

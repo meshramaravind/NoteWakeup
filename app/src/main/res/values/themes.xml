@@ -23,18 +23,6 @@
         </item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowDisablePreview">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <style name="Theme.NoteWakeup.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
     <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
@@ -55,6 +43,14 @@
     <style name="ActionModeStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:actionModeCloseDrawable">@drawable/ic_baseline_close_24</item>
         <item name="actionModeCloseDrawable">@drawable/ic_baseline_close_24</item>
+    </style>
+
+    <style name="Theme.NoteWakeup.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+        <item name="colorPrimaryDark">@color/colorbgappbar</item>
     </style>
 
 </resources>

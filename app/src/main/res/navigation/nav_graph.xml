@@ -13,19 +13,11 @@
 
         <action
             android:id="@+id/action_dashboardFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/addNoteFragment" />
 
         <action
             android:id="@+id/action_dashboardFragment_to_updateNoteFragment"
-            app:destination="@id/updateNoteFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/updateNoteFragment" />
 
     </fragment>
 
